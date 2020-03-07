@@ -15,11 +15,11 @@ class MainViewModel : ViewModel() {
         mTextWelcome.value = "Bom dia!"
     }
 
-    fun getWelcome(): LiveData<String> {
+    fun welcome(): LiveData<String> {
         return mTextWelcome
     }
 
-    fun getToastNotification(): LiveData<String> {
+    fun login(): LiveData<String> {
         return mToastNotification
     }
 

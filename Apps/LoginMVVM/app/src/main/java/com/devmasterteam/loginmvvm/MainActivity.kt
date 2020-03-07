@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Variáveis
         this.mContext = this
-        this.mMainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        this.mMainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         // Eventos
         buttonLogin.setOnClickListener(this)
@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun createObservers() {
-        mMainViewModel.getWelcome().observe(this, Observer {
+        mMainViewModel.welcome().observe(this, Observer {
             textWelcome.text = it
         })
-        mMainViewModel.getToastNotification().observe(this, Observer {
+        mMainViewModel.login().observe(this, Observer {
             Toast.makeText(mContext, it, Toast.LENGTH_SHORT).show()
         })
     }
